@@ -11,6 +11,7 @@ export function ServerRequest(this: SR, event: FetchEvent): SR {
 	$.headers = request.headers;
 	$.extend = event.waitUntil.bind(event);
 	$.cf = request.cf;
+	$.raw = request;
 	$.params = {};
 
 	$.path = url.pathname;

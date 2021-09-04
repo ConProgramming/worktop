@@ -43,6 +43,8 @@ request('should have instance properties', () => {
 	assert.ok(req.cf === event.request.cf);
 	assert.equal(req.params, {});
 
+	assert.is(req.raw, event.request);
+
 	const url = new URL(req.url);
 	assert.is(req.path, url.pathname);
 	assert.is(req.hostname, url.hostname);

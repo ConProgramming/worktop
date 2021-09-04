@@ -703,6 +703,15 @@ const onEvent1: ws.SocketHandler = async function (req, socket) {
 	assert<ws.Socket>(socket);
 	assert<ServerRequest<Params>>(req);
 
+	assert<Request>(req.raw);
+	assert<boolean>(req.raw.bodyUsed);
+	assert<IncomingCloudflareProperties>(req.raw.cf);
+
+	// @ts-expect-error
+	new Request(req.url, req);
+	new Request(req.url, req.raw);
+	new Request(req.raw);
+
 	let { context, event } = socket;
 	assert<Event>(event);
 	assert<ws.Context>(context);

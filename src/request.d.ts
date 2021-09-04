@@ -126,6 +126,7 @@ export declare class ServerRequest<P extends Params = Params> {
 	extend: FetchEvent['waitUntil'];
 	cf: IncomingCloudflareProperties;
 	headers: Headers;
+	raw: Request;
 	params: P;
 	body: {
 		<T>(): Promise<T|void>;
